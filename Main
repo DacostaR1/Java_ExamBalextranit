@@ -1,0 +1,21 @@
+
+package balextranit;
+
+/**
+ *
+ * @author Ronald
+ */
+
+public class Main {
+    public static void main(String[] args) {
+        Company company = new Company();
+        
+        PassengerSource source = new PassengerSource(company);
+        
+        for (int i = 0; i < 5; i++) {
+            boolean success = source.requestPickup();
+            System.out.println("Pickup request " + (i + 1) + ": " + 
+                             (success ? "Success" : "Failed"));
+        }
+    }
+}
