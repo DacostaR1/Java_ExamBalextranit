@@ -1,0 +1,40 @@
+
+package balextranit;
+
+/**
+ *
+ * @author Ronald
+ */
+
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+public class CompanyTest {
+   
+    @Test
+    public void testAddVehicle() {
+        Company company = new Company();
+        Vehicle vehicle = new Vehicle();
+        
+        company.addVehicle(vehicle);
+        
+        Location pickup = new Location(0, 0);
+        Location destination = new Location(1, 1);
+        Passenger passenger = new Passenger(pickup, destination);
+        
+        boolean result = company.scheduleVehicle(passenger);
+        assertTrue("Vehicle should be available for scheduling", result);
+    }
+    
+    @Test
+    public void testScheduleVehicleWithNoAvailableVehicles() {
+        Company company = new Company();
+        
+        Location pickup = new Location(0, 0);
+        Location destination = new Location(1, 1);
+        Passenger passenger = new Passenger(pickup, destination);
+        
+        boolean result = company.scheduleVehicle(passenger);
+        assertFalse("Should fail when no vehicles available", result);
+    }
+}
