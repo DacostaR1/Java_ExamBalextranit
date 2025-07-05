@@ -1,0 +1,22 @@
+
+package balextranit;
+
+/**
+ *
+ * @author Ronald
+ */
+public class Vehicle {
+    private boolean available = true;
+
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public void assignPassenger(Passenger passenger) {
+        this.available = false;
+    }
+
+    public void completeTrip() {
+        this.available = true;
+    }
+}
