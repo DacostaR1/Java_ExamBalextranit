@@ -1,0 +1,34 @@
+
+package balextranit;
+/**
+ * @author Ronald
+ */
+import java.util.Random;
+
+public class PassengerSource {
+    private final Company company;
+    private final Random random;
+
+    public PassengerSource(Company company) {
+        if (company == null) {
+            throw new IllegalArgumentException("Company cannot be null");
+        }
+        this.company = company;
+        this.random = new Random();
+    }
+    public boolean requestPickup() {
+        
+        int pickupX, pickupY, destX, destY;
+      do {
+            pickupX = random.nextInt(101);
+            pickupY = random.nextInt(101);
+            destX = random.nextInt(101);
+            destY = random.nextInt(101);
+        } while (pickupX == destX && pickupY == destY);
+   Location pickup = new Location(pickupX, pickupY);
+        Location destination = new Location(destX, destY);
+        Passenger passenger = new Passenger(pickup, destination);
+        
+        return company.scheduleVehicle(passenger);
+    }
+}
