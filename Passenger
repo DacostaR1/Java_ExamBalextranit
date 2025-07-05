@@ -1,0 +1,32 @@
+
+package balextranit;
+
+/**
+ *
+ * @author Ronald
+ */
+
+public class Passenger {
+    private final Location pickup;
+    private final Location destination;
+
+    public Passenger(Location pickup, Location destination) {
+        if (pickup == null || destination == null) {
+            throw new IllegalArgumentException("Locations cannot be null");
+        }
+        if (pickup.equals(destination)) {
+            throw new IllegalArgumentException("Pickup and destination cannot be the same");
+        }
+        this.pickup = pickup;
+        this.destination = destination;
+    }
+
+    public Location getPickup() {
+        return pickup;
+    }
+
+    public Location getDestination() {
+        return destination;
+    }
+}
+
