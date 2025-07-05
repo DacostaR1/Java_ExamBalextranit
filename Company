@@ -1,0 +1,49 @@
+
+package balextranit;
+
+/**
+ *
+ * @author Ronald
+ */
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Company {
+    private final List<Vehicle> vehicles = new ArrayList<>();
+    private int requestCounter = 0; // Track request sequence
+
+    public Company() {
+       
+        vehicles.add(new Vehicle());
+    }
+
+    
+    public void addVehicle(Vehicle vehicle) {
+        if (vehicle != null) {
+            vehicles.add(vehicle);
+        }
+    }
+
+    public boolean scheduleVehicle(Passenger passenger) {
+        if (passenger == null) {
+            throw new IllegalArgumentException("Passenger cannot be null");
+        }
+
+        requestCounter++;
+        
+        boolean success = requestCounter % 2 == 1;
+        
+        if (success) {
+          
+            for (Vehicle vehicle : vehicles) {
+                if (vehicle.isAvailable()) {
+                    vehicle.assignPassenger(passenger);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}
